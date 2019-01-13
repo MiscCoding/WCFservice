@@ -52,5 +52,34 @@ namespace testService
             Array.Sort(ar);
             return ar;
         }
+
+        public Student GetTopper(List<Student> sList)
+        {
+            foreach (Student s in sList)
+            {
+                double avg = (s.M1 + s.M2 + s.M3) / 3;
+                s.Avg = avg;
+
+            }
+            Student MaxStudent = sList[0];
+
+            foreach (Student s in sList)
+            {
+                if (s.Avg > MaxStudent.Avg)
+                {
+                    MaxStudent = s;
+                }
+            }
+
+            return MaxStudent;
+        }
+
+
+        public double GetAvg(Student S)
+        {
+            double Avg = (S.M1 + S.M2 + S.M3) / 3.0;
+
+            return Avg;
+        }
     }
 }

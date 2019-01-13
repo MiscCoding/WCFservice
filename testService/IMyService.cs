@@ -25,6 +25,9 @@ namespace testService
 
         [OperationContract]
         int[] GetSorted(int[] ar);
+
+        [OperationContract]
+        string GetTopper(List<Student> sList);
     }
 
     [DataContract]
@@ -40,5 +43,7 @@ namespace testService
         public int M2 { get; set; }
         [DataMember]
         public int M3 { get; set; }
+        [DataMember]
+        public double Avg { get; set; }
     }
 }
