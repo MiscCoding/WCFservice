@@ -47,7 +47,8 @@ namespace testService
 
         public int[] GetSorted(int[] ar)
         {
-            throw new NotImplementedException();
+            Array.Sort(ar);
+            return ar;
         }
     }
 }
