@@ -27,7 +27,18 @@ namespace testService
         int[] GetSorted(int[] ar);
 
         [OperationContract]
-        string GetTopper(List<Student> sList);
+        Student GetTopper(List<Student> sList);
+
+        [OperationContract]
+        List<Country> GetCountries();
+    }
+    [DataContract]
+    public class Country
+    {
+        [DataMember]
+        public int CountryId { get; set; }
+        [DataMember]
+        public string CountryName { get; set; }
     }
 
     [DataContract]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,6 +81,32 @@ namespace testService
             double Avg = (S.M1 + S.M2 + S.M3) / 3.0;
 
             return Avg;
+        }
+
+        
+
+        public List<Country> GetCountries()
+        {
+            List<Country> LC = new List<Country>();
+            string ConStr = "data source=DESKTOP-0V3BOG8\\SQLEXPRESS;initial catalog=WCF; integrated security=True";
+
+            SqlConnection con = new SqlConnection(ConStr);
+            SqlCommand cmd = new SqlCommand("Select * From Country", con);
+            con.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while(dr.Read())
+            {
+                Country c = new Country();
+                c.CountryId = int.Parse(dr[0].ToString());
+                c.CountryName = dr[1].ToString();
+                LC.Add(c);
+            }
+            dr.Close();
+            con.Close();
+
+            return LC;
         }
     }
 }
